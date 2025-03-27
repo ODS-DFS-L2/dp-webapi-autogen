@@ -1,0 +1,102 @@
+    get:
+      tags:
+      - データ流通システム
+      description: XXXデータモデルのデータを取得します。
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Tracking:
+              description: トラッキングID
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+               $ref: "../components/schemas/dataModel/parts.yaml#/parts"
+    put:
+      tags:
+      - データ流通システム
+      description: XXXデータモデルのデータを新規作成or更新します。
+      requestBody:
+        description: Request Body
+        content:
+          application/json:
+            schema:
+                $ref: "../components/schemas/dataModel/parts.yaml#/parts"
+            examples:
+                create:
+                  summary: データ
+        required: true
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Tracking:
+              description: トラッキングID
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: "../components/schemas/dataModel/parts.yaml#/parts"
+        "201":
+          description: Created       
+          headers:
+            X-Tracking:
+              description: トラッキングID
+              schema:
+                type: string
+                format: uuid
+    delete: 
+      tags:
+      - データ流通システム
+      description: XXXデータモデルのデータを削除します。
+      parameters:
+      - name: id
+        in: query
+        description: データID
+        schema:
+          type: string
+          example: "123456789"
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - データ流通システム
+      description: XXXデータモデルのデータを新規作成or更新します。
+      parameters:
+      requestBody:
+        description: Request Body
+        content:
+          application/json:
+            schema:
+                $ref: "../components/schemas/dataModel/parts.yaml#/parts"
+            examples:
+                create:
+                  summary: データ
+        required: true
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Tracking:
+              description: トラッキングID
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: "../components/schemas/dataModel/parts.yaml#/parts"
+        "201":
+          description: Created       
+          headers:
+            X-Tracking:
+              description: トラッキングID
+              schema:
+                type: string
+                format: uuid

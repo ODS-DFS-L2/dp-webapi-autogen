@@ -1,0 +1,15 @@
+# Use the official Node.js image from the Docker Hub
+FROM node:20-alpine
+
+# Install prism
+RUN npm config set strict-ssl false
+RUN npm install -g @stoplight/prism-cli
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy OpenAPI spec to the container
+COPY ./docs/openapi_template /app/openapi_template
+
+# Define the command to run the mock server
+CMD ["prism", "mock", "-h", "0.0.0.0", "/app/openapi_template/openapi.yaml"]

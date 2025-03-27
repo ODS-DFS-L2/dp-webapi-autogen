@@ -1,0 +1,32 @@
+parts:
+  required:
+  - dataModelType
+  - attribute
+  type: object
+  description: データモデル
+  properties:
+    dataModelType:
+      type: string
+      description: データモデルタイプ
+      enum:
+        - test1
+        - test2
+      example: test1
+    attribute:
+      type: object
+      description: データモデル要素
+      required:
+        - dataId
+        - value
+      properties:
+        dataId:
+          type: string
+          format: uuid 
+          description: データを一意に識別するID
+          example: "78aa302c-1600-44b3-a331-e4659c0b28a1"
+        value:
+          type: number
+          minimum: 0
+          maximum: 999999999
+          description: データモデル要素値
+          example: 123456789

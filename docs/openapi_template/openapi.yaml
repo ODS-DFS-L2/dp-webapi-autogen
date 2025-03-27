@@ -1,0 +1,22 @@
+openapi: "3.0.3"
+info:
+  title: データ連携API
+  version: "0.0.1"
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /parts:
+    $ref: "./paths/parts.yaml"
+components:
+  schemas:
+    dataModel.parts:
+      $ref: "./components/schemas/dataModel/parts.yaml#/parts"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: apiKey
+      in: header
+    Authorization:
+      type: http
+      scheme: bearer
+      description: アクセストークン発行APIで発行したアクセストークン
